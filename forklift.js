@@ -52,7 +52,8 @@ function
 load_config()
 {
 	try {
-		var path = mod_path.join(__dirname, 'config.json');
+		var path = process.argv.length > 2 ?
+		    process.argv[2] : mod_path.join(__dirname, 'config.json');
 		var str = mod_fs.readFileSync(path, 'utf8');
 		var json = JSON.parse(str);
 
