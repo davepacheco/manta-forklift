@@ -213,15 +213,19 @@ upload_one()
 	});
 	fstream.on('open', function () {
 		CLIENT.put(manta_path, fstream, options, function (err, res) {
+			var wasended = ended;
 			ended = true;
 			if (err && err.name === 'PreconditionFailedError') {
 				log('file exists: %s', manta_path);
-				handle_conflict(manta_path);
+				if (!wasended)
+					handle_conflict(manta_path);
 			} else if (err) {
 				log('upload error: %r', err);
-				upload_end(false);
+				if (!wasended)
+					upload_end(false);
 			} else {
-				upload_end(true);
+				if (!wasended)
+					upload_end(true);
 			}
 		});
 	});
@@ -268,7 +272,8 @@ handle_conflict(manta_path)
 			}
 
 			if (md5 !== remote_md5) {
-				log('mismatched local and remote: %s', UPLOADING);
+				log('mismatched local and remote: %s',
+				    UPLOADING);
 				upload_end(false);
 				return;
 			}
