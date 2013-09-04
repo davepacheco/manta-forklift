@@ -1,0 +1,15 @@
+{
+	"local_dir": "/var/tmp/OUTBOUND",
+	"manta_dir": "/user/stor/forklift",
+	"match_filenames": [
+		".*\\.json$",
+		".*\\.mov"
+	],
+	"manta": {
+		"url": "https://us-east.manta.joyent.com",
+		"user": "user",
+		"key_id": "11:22:33:...",
+		"key_file": "./id_rsa"
+	},
+	"lockport": 12372
+}

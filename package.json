@@ -1,0 +1,14 @@
+{
+	"name": "manta-forklift",
+	"version": "0.0.0",
+	"main": "forklift.js",
+	"author": "Joshua M. Clulow <jmc@joyent.com>",
+	"license": "MIT",
+	"dependencies": {
+		"manta": "git://github.com/joyent/node-manta.git",
+		"vasync": "~1.4.0",
+		"assert-plus": "~0.1.4",
+		"extsprintf": "~1.0.2",
+		"portmutex": "0.0.1"
+	}
+}

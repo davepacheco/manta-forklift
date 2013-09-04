@@ -1,0 +1,6 @@
+#!/bin/ksh
+
+DIR=$(whence $(dirname $0))
+
+node ${DIR}/forklift.js 2>&1 | tee -a ${DIR}/logfile.txt
+
